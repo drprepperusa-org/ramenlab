@@ -27,7 +27,7 @@ export default function FeaturedRamen() {
   const item = featuredRamen[active];
 
   return (
-    <section id="featured" className="section relative overflow-hidden bg-ink py-16 sm:py-24 md:py-32">
+    <section id="featured" className="section relative bg-ink py-16 sm:py-24 md:py-32">
       {/* background kanji watermark — rotates slowly */}
       <motion.div
         aria-hidden

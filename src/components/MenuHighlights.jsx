@@ -72,7 +72,7 @@ export default function MenuHighlights() {
   const headingY = useTransform(scrollYProgress, [0, 1], [60, -60]);
 
   return (
-    <section id="menu" ref={sectionRef} className="section relative overflow-hidden bg-ink py-16 sm:py-24 md:py-32">
+    <section id="menu" ref={sectionRef} className="section relative bg-ink py-16 sm:py-24 md:py-32">
       {/* Asanoha pattern in background */}
       <div className="absolute inset-0 bg-asanoha opacity-50" />
 

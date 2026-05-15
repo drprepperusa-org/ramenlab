@@ -46,7 +46,7 @@ export default function Story() {
     <section
       id="story"
       ref={sectionRef}
-      className="section relative overflow-hidden bg-soot py-20 sm:py-32 md:py-44"
+      className="section relative bg-soot py-20 sm:py-32 md:py-44"
     >
       {/* Giant kanji background */}
       <motion.div
