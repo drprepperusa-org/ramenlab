@@ -19,7 +19,7 @@ export const SEO = {
     'Ramen Lab — A cinematic Japanese ramen experience. Twelve-hour broths, hand-pulled noodles, and the obsessive soul of a Shinjuku alley shop.',
   shortDescription: 'Crafted bowls, Tokyo soul.',
   // Update once domain is live.
-  url: import.meta.env?.VITE_SITE_URL || 'https://ramenlab.com',
+  url: import.meta.env?.VITE_SITE_URL || 'https://ramenlab.vercel.app',
   locale: 'en_US',
   // Drop an actual og image at /public/og-image.jpg (1200x630).
   ogImage: '/og-image.jpg',
