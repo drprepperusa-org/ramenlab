@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLenis } from './hooks/useLenis';
+import { initAnalytics } from './lib/analytics';
 
 import LoadingScreen from './components/LoadingScreen';
 import Navbar from './components/Navbar';
@@ -20,6 +21,11 @@ export default function App() {
   // Hold scroll while loading screen is up.
   useEffect(() => {
     document.body.style.overflow = loaded ? 'auto' : 'hidden';
+  }, [loaded]);
+
+  // Fire pixels once the page is interactive (skips the loading screen).
+  useEffect(() => {
+    if (loaded) initAnalytics();
   }, [loaded]);
 
   useLenis(loaded);

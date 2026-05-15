@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import DialogShell, { Stepper, StepHeading } from './DialogShell';
 import { ConfirmationCard } from './ReserveDialog';
 import { closeDialog } from '../../hooks/useDialog';
+import { trackEvent } from '../../lib/analytics';
 
 const STEPS = ['Broth', 'Noodle', 'Toppings', 'Heat', 'Drink', 'Review'];
 
@@ -75,6 +76,15 @@ export default function BuildBowlDialog({ open }) {
 
   const next = () => {
     if (step === 5) {
+      trackEvent('bowl_built', {
+        value: total,
+        currency: 'USD',
+        broth: broth?.id,
+        noodle: noodle?.id,
+        heat,
+        drink,
+        toppings_count: toppings.length,
+      });
       setSubmitted(true);
     } else {
       setStep((s) => Math.min(s + 1, STEPS.length - 1));

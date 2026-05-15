@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Block utility paths if/when they exist
+Disallow: /api/
+Disallow: /admin/
+
+# Sitemap — update the absolute URL once the domain is live
+Sitemap: https://ramenlab.com/sitemap.xml

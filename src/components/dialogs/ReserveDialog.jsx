@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import DialogShell, { Stepper, StepHeading } from './DialogShell';
 import { closeDialog } from '../../hooks/useDialog';
+import { trackEvent } from '../../lib/analytics';
 
 const TIME_SLOTS = [
   '5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM',
@@ -52,6 +53,11 @@ export default function ReserveDialog({ open }) {
 
   const next = () => {
     if (step === 3) {
+      trackEvent('reserve_booked', {
+        party_size: party,
+        date: date?.toISOString().slice(0, 10),
+        time,
+      });
       setSubmitted(true);
       setStep(4);
     } else {

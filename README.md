@@ -108,6 +108,53 @@ All four are loaded from Google Fonts with `preconnect` and `display=swap`.
 - **Change copy:** all marketing strings live in `content.js` (`storyParagraphs`, `testimonials`, `featuredRamen[].tagline`, etc.).
 - **Tune the loading time:** in `src/components/LoadingScreen.jsx` change `const total = 2400;`.
 
+## Connecting Shopify, Analytics, and Ads
+
+The site ships pre-wired for Shopify Storefront API, GA4, Meta Pixel, Google Ads, and TikTok Pixel — everything reads from environment variables. Copy `.env.example` to `.env` and fill in the IDs you have. Anything left blank stays disabled.
+
+### Env vars
+
+| Variable | Purpose |
+|---|---|
+| `VITE_SITE_URL` | Canonical site origin used by SEO meta + sitemap |
+| `VITE_SHOPIFY_DOMAIN` | `*.myshopify.com` (no `https://`) |
+| `VITE_SHOPIFY_STOREFRONT_TOKEN` | Public Storefront API token (NOT Admin) |
+| `VITE_SHOPIFY_API_VERSION` | Defaults to `2025-01` |
+| `VITE_GA4_ID` | GA4 measurement ID, `G-XXXXXXXXXX` |
+| `VITE_META_PIXEL_ID` | 15-digit Meta Pixel ID |
+| `VITE_GOOGLE_ADS_ID` | Google Ads ID, `AW-1234567890` |
+| `VITE_GOOGLE_ADS_CONV_LABEL` | Conversion label paired with `VITE_GOOGLE_ADS_ID` |
+| `VITE_TIKTOK_PIXEL_ID` | Optional |
+
+After setting env vars, `npm run build` bakes them into the bundle. They are *public* by design — never put Admin tokens or secret keys behind a `VITE_` prefix.
+
+### What's wired and what you still need to do
+
+| Capability | Status | What's needed to activate |
+|---|---|---|
+| SEO meta + OG + Twitter | ✅ in `index.html` | Replace placeholder domain + drop a real `/og-image.jpg` (1200x630) |
+| JSON-LD structured data | ✅ Restaurant schema | Swap to `Product` schema if pivoting to subscription |
+| Sitemap | ✅ at `/sitemap.xml` | Update URLs once domain is live |
+| `robots.txt` | ✅ | Update sitemap URL |
+| GA4 / Meta / Google Ads / TikTok pixels | ✅ wired through `src/lib/analytics.js` | Set env vars |
+| Conversion events (reserve, bowl, gift) | ✅ fire from dialog submit | None — auto-mapped to Meta `Schedule`/`AddToCart`/`Purchase` |
+| Shopify cart/checkout API | ✅ stub in `src/lib/shopify.js` | Set env vars + add product handles in components |
+| Subscription selling plans | ✅ queried in `getProductByHandle()` | Configure Selling Plan Groups in Shopify admin |
+
+### Analytics events the site fires
+
+| Event | Fires on | Maps to (Meta) | GA4/Ads conversion? |
+|---|---|---|---|
+| `page_view` | Initial load (auto by gtag) | `PageView` | No |
+| `dialog_opened` | (Not yet wired — add if needed) | — | No |
+| `reserve_booked` | Submit reservation | `Schedule` | **Yes** |
+| `bowl_built` | Submit Build-a-Bowl order | `AddToCart` | No |
+| `gift_sent` | Submit gift card | `Purchase` | **Yes** |
+
+Edit `src/lib/analytics.js` (`META_MAP` and `isConversion()`) to add or rename.
+
+---
+
 ## Browser support
 
 Tested in Chromium 120+, Firefox 121+, Safari 17+. The grain overlay uses `mix-blend-mode: overlay` which falls back gracefully in older engines.

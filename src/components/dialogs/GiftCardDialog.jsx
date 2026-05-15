@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import DialogShell, { Stepper, StepHeading } from './DialogShell';
 import { ConfirmationCard } from './ReserveDialog';
 import { closeDialog } from '../../hooks/useDialog';
+import { trackEvent } from '../../lib/analytics';
 
 const STEPS = ['Amount', 'Recipient', 'Message', 'Confirm'];
 
@@ -44,6 +45,12 @@ export default function GiftCardDialog({ open }) {
 
   const next = () => {
     if (step === 3) {
+      trackEvent('gift_sent', {
+        value: finalAmount,
+        currency: 'USD',
+        custom_amount: useCustom,
+        deliver_on: sender.deliverOn,
+      });
       setSubmitted(true);
     } else {
       setStep((s) => Math.min(s + 1, STEPS.length - 1));
