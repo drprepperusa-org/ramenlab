@@ -48,9 +48,15 @@
 }
 
 @layer components {
-  /* Section frame — every section shares this rhythm */
+  /* Section frame — every section shares this rhythm.
+     `overflow-x: clip` instead of `overflow: hidden`: still clips
+     runaway decorative children (oversized kanji watermarks) but does
+     NOT create a new formatting context. `overflow: hidden` did, which
+     triggered an aspect-ratio + Swiper resize loop on mobile in the
+     FeaturedRamen section that pushed the document height to 26M px. */
   .section {
-    @apply relative w-full overflow-hidden;
+    @apply relative w-full;
+    overflow-x: clip;
   }
 
   .container-x {
