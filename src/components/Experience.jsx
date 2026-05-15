@@ -78,7 +78,7 @@ export default function Experience() {
       <RainParticles density={150} />
 
       {/* Section heading + audio toggle */}
-      <div className="container-x absolute inset-x-0 top-12 z-10 flex items-center justify-between">
+      <div className="container-x absolute inset-x-0 top-8 z-10 flex flex-col items-start justify-between gap-4 md:top-12 md:flex-row md:items-center">
         <div>
           <div className="mb-2 flex items-center gap-3">
             <span className="h-px w-12 bg-crimson" />

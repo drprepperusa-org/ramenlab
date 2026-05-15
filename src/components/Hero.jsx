@@ -135,7 +135,7 @@ export default function Hero() {
         </motion.div>
 
         <h1
-          className="headline text-7xl text-bone sm:text-8xl md:text-[10rem] lg:text-[12rem]"
+          className="headline text-[3.25rem] leading-[0.95] text-bone sm:text-7xl md:text-[10rem] lg:text-[12rem]"
           style={{
             textShadow:
               '0 4px 24px rgba(0,0,0,0.9), 0 2px 6px rgba(0,0,0,0.7), 0 0 100px rgba(0,0,0,0.5)',
@@ -164,7 +164,7 @@ export default function Hero() {
           transition={{ delay: 1.6, duration: 1 }}
           className="mt-4 flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
         >
-          <p className="max-w-md font-display text-2xl italic text-bone/80 md:text-3xl">
+          <p className="max-w-md font-display text-xl italic text-bone/80 sm:text-2xl md:text-3xl">
             Crafted Bowls. <span className="text-crimson">Tokyo</span> Soul.
           </p>
           <div className="flex flex-wrap items-center gap-4">

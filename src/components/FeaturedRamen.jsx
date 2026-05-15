@@ -27,11 +27,11 @@ export default function FeaturedRamen() {
   const item = featuredRamen[active];
 
   return (
-    <section id="featured" className="section relative bg-ink py-24 md:py-32">
+    <section id="featured" className="section relative overflow-hidden bg-ink py-16 sm:py-24 md:py-32">
       {/* background kanji watermark — rotates slowly */}
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute -right-20 top-1/2 -translate-y-1/2 select-none font-japanese text-[24rem] font-black text-bone/[0.025] leading-none md:text-[36rem]"
+        className="pointer-events-none absolute -right-10 top-1/2 -translate-y-1/2 select-none font-japanese text-[14rem] font-black text-bone/[0.025] leading-none sm:text-[24rem] md:text-[36rem]"
         animate={{ rotate: 360 }}
         transition={{ duration: 80, repeat: Infinity, ease: 'linear' }}
       >
@@ -163,7 +163,7 @@ export default function FeaturedRamen() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="glass relative p-8 md:p-10"
+                className="glass relative p-6 sm:p-8 md:p-10"
               >
                 <div className="absolute -left-3 top-8 font-japanese text-xl text-crimson">
                   {item.kanji}
@@ -171,7 +171,7 @@ export default function FeaturedRamen() {
                 <div className="mb-2 font-mono text-[10px] uppercase tracking-[0.4em] text-bone/40">
                   No. {String(active + 1).padStart(2, '0')}
                 </div>
-                <h3 className="font-display text-5xl text-bone md:text-6xl">{item.name}</h3>
+                <h3 className="font-display text-4xl text-bone sm:text-5xl md:text-6xl">{item.name}</h3>
                 <p className="mt-4 max-w-md font-display text-lg italic text-bone/70">
                   {item.tagline}
                 </p>

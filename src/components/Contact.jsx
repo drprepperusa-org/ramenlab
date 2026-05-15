@@ -101,7 +101,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="reserve" className="section relative bg-ink py-24 md:py-32">
+    <section id="reserve" className="section relative bg-ink py-16 sm:py-24 md:py-32">
       <div className="absolute inset-0 bg-asanoha opacity-40" />
       <div className="container-x relative z-10">
         <motion.div
@@ -134,7 +134,7 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
             onSubmit={onSubmit}
-            className="glass relative space-y-5 p-8 md:p-10 lg:col-span-7"
+            className="glass relative space-y-5 p-6 sm:p-8 md:p-10 lg:col-span-7"
           >
             <div className="grid gap-5 md:grid-cols-2">
               <NeonInput label="Name" name="name" required />

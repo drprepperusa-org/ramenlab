@@ -72,7 +72,7 @@ export default function MenuHighlights() {
   const headingY = useTransform(scrollYProgress, [0, 1], [60, -60]);
 
   return (
-    <section id="menu" ref={sectionRef} className="section relative bg-ink py-24 md:py-32">
+    <section id="menu" ref={sectionRef} className="section relative overflow-hidden bg-ink py-16 sm:py-24 md:py-32">
       {/* Asanoha pattern in background */}
       <div className="absolute inset-0 bg-asanoha opacity-50" />
 
@@ -109,7 +109,7 @@ export default function MenuHighlights() {
 
         {/* Scrolling marquee for tonal flavor */}
         <div className="mt-24 overflow-hidden border-y border-bone/10 py-6">
-          <div className="marquee-strip font-display text-3xl italic text-bone/30 md:text-5xl">
+          <div className="marquee-strip font-display text-2xl italic text-bone/30 sm:text-3xl md:text-5xl">
             {Array.from({ length: 2 }).map((_, repeat) => (
               <div key={repeat} className="flex shrink-0 items-center gap-12">
                 <span>本格 · Authentic</span>

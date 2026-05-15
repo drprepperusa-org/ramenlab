@@ -46,7 +46,7 @@ export default function Story() {
     <section
       id="story"
       ref={sectionRef}
-      className="section relative bg-soot py-32 md:py-44"
+      className="section relative overflow-hidden bg-soot py-20 sm:py-32 md:py-44"
     >
       {/* Giant kanji background */}
       <motion.div
@@ -93,7 +93,7 @@ export default function Story() {
             whileInView={{ scale: 1, rotate: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute -bottom-6 -left-6 flex h-32 w-32 items-center justify-center rounded-full bg-crimson text-bone shadow-neon"
+            className="absolute -bottom-4 -left-4 flex h-24 w-24 items-center justify-center rounded-full bg-crimson text-bone shadow-neon sm:-bottom-6 sm:-left-6 sm:h-32 sm:w-32"
           >
             <div className="text-center">
               <div className="font-japanese text-2xl font-black">本格</div>
@@ -126,7 +126,7 @@ export default function Story() {
 
           <div
             ref={wordsRef}
-            className="mt-10 space-y-6 font-display text-xl leading-relaxed text-bone/85 md:text-2xl"
+            className="mt-10 space-y-6 font-display text-lg leading-relaxed text-bone/85 sm:text-xl md:text-2xl"
           >
             {storyParagraphs.map((p, i) => (
               <p key={i}>

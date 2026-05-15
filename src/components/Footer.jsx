@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-soot pt-24 pb-10">
+    <footer className="relative overflow-hidden bg-soot pt-16 pb-10 sm:pt-24">
       <div className="absolute inset-0 bg-asanoha opacity-30" />
 
       {/* Animated divider */}
@@ -53,7 +53,7 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-12 lg:col-span-7 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-12 lg:col-span-7 lg:grid-cols-3">
             <div>
               <h4 className="mb-4 font-mono text-[10px] uppercase tracking-[0.4em] text-crimson">
                 <span className="font-japanese mr-2">店舗</span>Visit
