@@ -67,10 +67,10 @@ export default function FeaturedRamen() {
         </div>
 
         {/* Stage */}
-        <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
+        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
           {/* Big rotating bowl */}
-          <div className="relative order-2 lg:order-1 lg:col-span-7">
-            <div className="relative aspect-square overflow-hidden">
+          <div className="relative min-w-0 order-2 lg:order-1 lg:col-span-7">
+            <div className="relative aspect-square w-full overflow-hidden">
               <Swiper
                 modules={[Autoplay, EffectFade]}
                 effect="fade"
